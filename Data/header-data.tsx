@@ -17,6 +17,6 @@ export const headerData = [
   },
   {
     name: "Контакти",
-    path: "#contacts",
+    path: "/contacts",
   },
 ];
