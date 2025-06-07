@@ -18,5 +18,6 @@ export const headerData = [
   {
     name: "Контакти",
     path: "/contacts",
+    className: "header__link--contacts",
   },
 ];

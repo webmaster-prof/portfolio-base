@@ -38,7 +38,10 @@ const Header = () => {
           <div className="header__inner">
             <ul className="header__list">
               {headerData.map((data) => (
-                <li className="header__item" key={data.name}>
+                <li
+                  className={data.className || "header__item"}
+                  key={data.name}
+                >
                   <a href={data.path} className="header__link">
                     {data.name}
                   </a>

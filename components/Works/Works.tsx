@@ -11,7 +11,7 @@ const Works = () => {
           {workstData.map((data, index) => (
             <article className="works__item" key={data.id}>
               <a
-                href=""
+                href={data.path}
                 className="works__link"
                 data-aos="flip-left"
                 data-aos-anchor-placement="top-center"

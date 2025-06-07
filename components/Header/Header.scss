@@ -49,6 +49,21 @@
   font-family: var(--montseratFont);
 }
 
+.header__link--contacts {
+  background-color: rgb(255, 170, 0);
+  border-radius: 20px;
+  padding: 0.8125rem 1.25rem;
+  transition: transform 0.3s ease-in-out;
+  a {
+    color: rgb(27, 111, 27);
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
 .header__burger {
   display: none;
   width: 50px;
