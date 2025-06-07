@@ -2,12 +2,18 @@
 
 import { useRouter } from "next/navigation";
 import "./contacts.scss";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+import emailjs from "emailjs-com";
+import { p } from "framer-motion/client";
+
 const page = () => {
   const router = useRouter();
+  const form = useRef();
+  const [isSent, setIsSent] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     AOS.init({
@@ -15,6 +21,29 @@ const page = () => {
       once: true,
     });
   }, []);
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_zggnhtm",
+        "template_neckv1k",
+        form.current,
+        "user_RyWBgBRflyUzGSWbQ6rhV"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          setIsSent(true);
+          form.current.reset();
+        },
+        (error) => {
+          console.error(error.text);
+          setError("Помилка при відправці.");
+        }
+      );
+  };
 
   return (
     <section className="contacts">
@@ -28,7 +57,7 @@ const page = () => {
         <h2 className="contacts__title title" data-aos="fade-up">
           Напишіть мені
         </h2>
-        <form className="contacts__form">
+        <form className="contacts__form" ref={form} onSubmit={sendEmail}>
           <div
             className="contacts__form-block"
             data-aos="fade-up"
@@ -41,6 +70,7 @@ const page = () => {
               className="contacts__form-input"
               type="text"
               id="name"
+              name="user_name"
               required
             />
           </div>
@@ -56,6 +86,7 @@ const page = () => {
               className="contacts__form-input"
               type="email"
               id="email"
+              name="user_email"
               required
             />
           </div>
@@ -70,6 +101,7 @@ const page = () => {
             <textarea
               className="contacts__form-area"
               id="text"
+              name="message"
               required
             ></textarea>
             <button className="contacts__form-button" type="submit">
@@ -77,6 +109,14 @@ const page = () => {
             </button>
           </div>
         </form>
+        <div className="contacts__messages">
+          {isSent && (
+            <p style={{ color: "rgb(255, 170, 0)", fontSize: "30px" }}>
+              Повідомлення відправленно!
+            </p>
+          )}
+          {error && <p style={{ color: "red" }}>{error}</p>}
+        </div>
       </div>
     </section>
   );

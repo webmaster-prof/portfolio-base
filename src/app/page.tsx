@@ -22,8 +22,8 @@ export default function Home() {
       AOS.init({
         duration: 1000,
         once: true,
-        easing: "ease",
         offset: 100,
+        easing: "ease-in-out",
         anchorPlacement: "top-bottom",
       });
     };

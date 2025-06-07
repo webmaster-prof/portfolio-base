@@ -1,7 +1,7 @@
 export const aboutData = [
   {
     id: "1",
-    desc: "Вчуся Розробці сайтів більше двох років.",
+    desc: "Вчуся Розробці сайтів більше трёх років.",
   },
   {
     id: "2",
@@ -9,7 +9,7 @@ export const aboutData = [
   },
   {
     id: "3",
-    desc: "Використовую класичні технології CSS, JavaScript, React.",
+    desc: "Використовую класичні технології SCSS, JavaScript, React, і фреймворки Next.js коли треба Express.js",
   },
   {
     id: "4",
