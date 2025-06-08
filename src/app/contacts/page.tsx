@@ -17,7 +17,7 @@ const page = () => {
 
   useEffect(() => {
     AOS.init({
-      duration: 800,
+      duration: 1000,
       once: true,
     });
   }, []);
@@ -37,6 +37,10 @@ const page = () => {
           console.log(result.text);
           setIsSent(true);
           form.current.reset();
+
+          setTimeout(() => {
+            setIsSent(false);
+          }, 5000);
         },
         (error) => {
           console.error(error.text);

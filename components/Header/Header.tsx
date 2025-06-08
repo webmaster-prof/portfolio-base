@@ -10,6 +10,8 @@ const Header = () => {
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
+  const toggleMenu = () => setActiveMenu(!activeMenu);
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -28,7 +30,21 @@ const Header = () => {
     };
   }, [lastScrollY]);
 
-  const toggleMenu = () => setActiveMenu(!activeMenu);
+  const handleLinkClick = (path) => {
+    const targetId = path.replace("#", "");
+    const targetEliment = document.getElementById(targetId);
+
+    if (targetEliment) {
+      targetEliment.scrollIntoView({ behavior: "smooth" });
+      history.replaceState(
+        null,
+        "",
+        window.location.pathname + window.location.search
+      );
+    }
+
+    setActiveMenu(false);
+  };
 
   return (
     <>
@@ -42,7 +58,14 @@ const Header = () => {
                   className={data.className || "header__item"}
                   key={data.name}
                 >
-                  <a href={data.path} className="header__link">
+                  <a
+                    href={data.path}
+                    className="header__link"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleLinkClick(data.path);
+                    }}
+                  >
                     {data.name}
                   </a>
                 </li>
