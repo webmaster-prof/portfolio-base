@@ -62,8 +62,12 @@ const Header = () => {
                     href={data.path}
                     className="header__link"
                     onClick={(e) => {
-                      e.preventDefault();
-                      handleLinkClick(data.path);
+                      if (data.path.startsWith("#")) {
+                        e.preventDefault();
+                        handleLinkClick(data.path);
+                      } else {
+                        setActiveMenu(false);
+                      }
                     }}
                   >
                     {data.name}
