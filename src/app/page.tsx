@@ -10,7 +10,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import Contact from "../../components/Contact/Contact";
+// import Contact from "../../components/Contact/Contact";
 
 export default function Home() {
   useEffect(() => {
@@ -24,8 +24,6 @@ export default function Home() {
         duration: 1000,
         once: true,
         offset: 100,
-        easing: "ease-in-out",
-        anchorPlacement: "top-bottom",
       });
     };
     initAos();
