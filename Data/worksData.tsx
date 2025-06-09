@@ -69,7 +69,7 @@ export const workstData = [
     id: "12",
     src: "/images/Works/work-12.jpg",
     text: "Головна сторінка соціальної мережі з темною темою на scss js",
-    path: "https://vercel.com/programer1983s-projects/layout-social",
+    path: "https://layout-social.vercel.app/",
   },
   {
     id: "13",
